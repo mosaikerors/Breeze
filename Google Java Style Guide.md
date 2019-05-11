@@ -2,40 +2,40 @@
 
 ## Table of Contents
 
-1. [Introduction](#1)
-[1.1 Terminology notes](#1.1)
-[1.2 Guide notes](#1.2)
-2. [Source file basics](#2)
-[2.1 File name](#2.1)
-[2.2 File encoding: UTF-8](#2.2)
-[2.3 Special characters](#2.3)
-3. [Source file structure](#3)
-[3.1 License or copyright information, if presen](#3.1)
-[3.2 Package statement](#3.2)
-[3.3 Import statements](#3.3)
-[3.4 Class declaration](#3.4)
-4. [Formatting](#4)
-[4.1 Braces  ](#4.1)
-[4.2 Block indentation: +2 spaces](#4.2)
-[4.3 One statement per line](#4.3)
-[4.4 Column limit: 100](#4.4)
-[4.5 Line-wrapping](#4.5)
-[4.6 Whitespace](#4.6)
-[4.7 Grouping parentheses: recommended](#4.7)
-[4.8 Specific constructs](#4.8)
-5. [Naming](#5)
-[5.1 Rules common to all identifiers](#5.1)
-[5.2 Rules by identifier type](#5.2)
-[5.3 Camel case: defined](#5.3)
-6. [Programming Practices](#6)
-[6.1 @Override: always used](#6.1)
-[6.2 Caught exceptions: not ignored](#6.2)
-[6.3 Static members: qualified using class](#6.3)
-[6.4 Finalizers: not used](#6.4)
-7. [Javadoc](#7)
-[7.1 Formatting](#7.1)
-[7.2 The summary fragment](#7.2)
-[7.3 Where Javadoc is use](#7.3)
+1. [Introduction](#1)  
+[1.1 Terminology notes](#1.1)  
+[1.2 Guide notes](#1.2)  
+2. [Source file basics](#2)  
+[2.1 File name](#2.1)  
+[2.2 File encoding: UTF-8](#2.2)  
+[2.3 Special characters](#2.3)  
+3. [Source file structure](#3)  
+[3.1 License or copyright information, if presen](#3.1)  
+[3.2 Package statement](#3.2)  
+[3.3 Import statements](#3.3)  
+[3.4 Class declaration](#3.4)  
+4. [Formatting](#4)  
+[4.1 Braces  ](#4.1)  
+[4.2 Block indentation: +2 spaces](#4.2)  
+[4.3 One statement per line](#4.3)  
+[4.4 Column limit: 100](#4.4)  
+[4.5 Line-wrapping](#4.5)  
+[4.6 Whitespace](#4.6)  
+[4.7 Grouping parentheses: recommended](#4.7)  
+[4.8 Specific constructs](#4.8)  
+5. [Naming](#5)  
+[5.1 Rules common to all identifiers](#5.1)  
+[5.2 Rules by identifier type](#5.2)  
+[5.3 Camel case: defined](#5.3)  
+6. [Programming Practices](#6)  
+[6.1 @Override: always used](#6.1)  
+[6.2 Caught exceptions: not ignored](#6.2)  
+[6.3 Static members: qualified using class](#6.3)  
+[6.4 Finalizers: not used](#6.4)  
+7. [Javadoc](#7)  
+[7.1 Formatting](#7.1)  
+[7.2 The summary fragment](#7.2)  
+[7.3 Where Javadoc is use](#7.3)  
 
 ## <span id="1">1 Introduction</span>
 
@@ -87,13 +87,13 @@ For the remaining non-ASCII characters, either the actual Unicode character (e.g
 >**Tip:** In the Unicode escape case, and occasionally even when actual Unicode characters are used, an explanatory comment can be very helpful.
 
 Examples:
-|Tables|Discussion|
-|:---|:---|
-|```String unitAbbrev = "μs";```| Best: perfectly clear even without a comment. |
-|```String unitAbbrev = "\u03bcs"; // "μs"``` |Allowed, but there's no reason to do this.|
-|```String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"``` |Allowed, but awkward and prone to mistakes.|
-|```String unitAbbrev = "\u03bcs";```|Poor: the reader has no idea what this is.|
-|```return '\ufeff' + content; // byte order mark```|Good: use escapes for non-printable characters, and comment if necessary.|
+|Tables                                                       |Discussion                                                                |
+|:------------------------------------------------------------|:-------------------------------------------------------------------------|
+|```String unitAbbrev = "μs";```                              |Best: perfectly clear even without a comment.                             |
+|```String unitAbbrev = "\u03bcs"; // "μs"```                 |Allowed, but there's no reason to do this.                                |
+|```String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"``` |Allowed, but awkward and prone to mistakes.                               |
+|```String unitAbbrev = "\u03bcs";```                         |Poor: the reader has no idea what this is.                                |
+|```return '\ufeff' + content; // byte order mark```          |Good: use escapes for non-printable characters, and comment if necessary. |
 
 >**Tip:** Never make your code less readable simply out of fear that some programs might not handle non-ASCII characters properly. If that should happen, those programs are **broken** and they must be **fixed**.
 
