@@ -86,14 +86,14 @@ For the remaining non-ASCII characters, either the actual Unicode character (e.g
 
 >**Tip:** In the Unicode escape case, and occasionally even when actual Unicode characters are used, an explanatory comment can be very helpful.
 
-Examples:  
-|Tables                                                       |Discussion                                                                |  
-|:------------------------------------------------------------|:-------------------------------------------------------------------------|  
-|```String unitAbbrev = "μs";```                              |Best: perfectly clear even without a comment.                             |  
-|```String unitAbbrev = "\u03bcs"; // "μs"```                 |Allowed, but there's no reason to do this.                                |  
-|```String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"``` |Allowed, but awkward and prone to mistakes.                               |  
-|```String unitAbbrev = "\u03bcs";```                         |Poor: the reader has no idea what this is.                                |  
-|```return '\ufeff' + content; // byte order mark```          |Good: use escapes for non-printable characters, and comment if necessary. |  
+Examples:
+|Tables|Discussion|
+|:--|:--|  
+|```String unitAbbrev = "μs";```|Best: perfectly clear even without a comment.|
+|```String unitAbbrev = "\u03bcs"; // "μs"``` |Allowed, but there's no reason to do this.|
+|```String unitAbbrev = "\u03bcs"; // Greek letter mu, "s"``` |Allowed, but awkward and prone to mistakes.|
+|```String unitAbbrev = "\u03bcs";```|Poor: the reader has no idea what this is.|
+|```return '\ufeff' + content; // byte order mark```|Good: use escapes for non-printable characters, and comment if necessary.|
 
 >**Tip:** Never make your code less readable simply out of fear that some programs might not handle non-ASCII characters properly. If that should happen, those programs are **broken** and they must be **fixed**.
 
