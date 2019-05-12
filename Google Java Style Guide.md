@@ -31,11 +31,14 @@
 [6.1 @Override: always used](#6.1)  
 [6.2 Caught exceptions: not ignored](#6.2)  
 [6.3 Static members: qualified using class](#6.3)  
-[6.4 Finalizers: not used](#6.4)  
+[6.4 Constructs to Avoid](#6.4)  
+[6.5 Do Not Compound Increment or Decrement Operators](#6.5)
+[6.6 Access](#6.6)
 7. [Javadoc](#7)  
-[7.1 Formatting](#7.1)  
-[7.2 The summary fragment](#7.2)  
-[7.3 Where Javadoc is use](#7.3)  
+[7.1 Self-Documenting Code](#7.1)
+[7.2 Formatting](#7.2)  
+[7.3 The summary fragment](#7.3)  
+[7.4 Where Javadoc is use](#7.4)  
 
 ## <span id="1">1 Introduction</span>
 
@@ -342,7 +345,7 @@ Beyond where required by the language or other style rules, and apart from liter
 
 8. Optional
 
-    
+
 
    just inside both braces of an array initializer
 
