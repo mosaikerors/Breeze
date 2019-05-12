@@ -35,7 +35,7 @@
 [6.5 Do Not Compound Increment or Decrement Operators](#6.5)
 [6.6 Access](#6.6)
 7. [Javadoc](#7)  
-[7.1 Self-Documenting Code](#7.1)
+[7.1 Self-Documenting Code](#7.1)   
 [7.2 Formatting](#7.2)  
 [7.3 The summary fragment](#7.3)  
 [7.4 Where Javadoc is use](#7.4)  
