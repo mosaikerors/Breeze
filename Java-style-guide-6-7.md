@@ -1,13 +1,13 @@
-6 Programming Practices
+6 <span id="6">Programming Practices</span>
 -----------------------
 
-### 6.1 `@Override`: always used
+### <span id="6.1">6.1 `@Override`: always used</span>
 
 *Reasoning: A method is marked with the `@Override` annotation whenever it is legal. This includes a class method overriding a superclass method, a class method implementing an interface method, and an interface method respecifying a superinterface method.*
 
 **Exception:** `@Override` may be omitted when the parent method is `@Deprecated`.
 
-### 6.2 Caught exceptions: not ignored
+### 6.2 <span id="6.2">Caught exceptions: not ignored</span>
 
 *Reasoning: Except as noted below, it is very rarely correct to do nothing in response to a caught exception. (Typical responses are to log it, or if it is considered "impossible", rethrow it as an `AssertionError`.)*
 
@@ -29,7 +29,7 @@ When it truly is appropriate to take no action whatsoever in a catch block, the 
     } catch (NoSuchElementException expected) {
     }
 
-### 6.3 Static members: qualified using class
+### <span id="6.3">6.3 Static members: qualified using class</span>
 
 When a reference to a static class member must be qualified, it is qualified with that class's name, not with a reference or expression of that class's type.
 
@@ -38,7 +38,7 @@ When a reference to a static class member must be qualified, it is qualified wit
     aFoo.aStaticMethod(); // bad
     somethingThatYieldsAFoo().aStaticMethod(); // very bad
 
-### 6.4 Constructs to Avoid
+### <span id="6.4">6.4 Constructs to Avoid</span>
 
 #### 6.4.1 - Never use do..while
 
@@ -98,7 +98,7 @@ the developer to consider more than one end point for a construct. *
 
 *Reasoning: Don't do it. If you absolutely must, first read and understand [_Effective Java_ Item 7,](http://books.google.com/books?isbn=8131726592) "Avoid Finalizers," very carefully, and _then_ don't do it.*
 
-### 6.5 Do Not Compound Increment or Decrement Operators
+### <span id="6.5">6.5 Do Not Compound Increment or Decrement Operators</span>
 
 **Use a separate line for an increment or decrement.**
 
@@ -124,13 +124,13 @@ Note: i++ and ++i are equally fast, and i++ seems more consistent with the
 rest of the language. Since the above prevents any use of a case where ++i
 could make a difference, never use pre- increment/decrement.
 
-### 6.6 Access
+### 6.6 <span id="6.6">Access</span>
 
 **All fields must be private, except for some constants.**
 
-7 Javadoc
+7 <span id="7">Javadoc</span>
 ---------
-### 7.1 Self-Documenting Code
+### <span id="7.1">7.1 Self-Documenting Code</span>
 
 
     "Any fool can write code that a computer can understand.
@@ -154,7 +154,7 @@ Example:
     if ( (hero == theTick) &amp;&amp; isTickSidekick )
 
   </ul>
-### 7.2 Formatting
+### <span id="7.2">7.2 Formatting</span>
 
 #### 7.2.1 General form
 
@@ -180,7 +180,7 @@ One blank line—that is, a line containing only the aligned leading asterisk (`
 
 Any of the standard "block tags" that are used appear in the order `@param`, `@return`, `@throws`, `@deprecated`, and these four types never appear with an empty description. When a block tag doesn't fit on a single line, continuation lines are indented four (or more) spaces from the position of the `@`.
 
-### 7.3 The summary fragment
+### <span id="7.3">7.3 The summary fragment</span>
 
 Each Javadoc block begins with a brief **summary fragment**. This fragment is very important: it is the only part of the text that appears in certain contexts such as class and method indexes.
 
@@ -188,7 +188,7 @@ This is a fragment—a noun phrase or verb phrase, not a complete sentence. It d
 
 **Tip:** A common mistake is to write simple Javadoc in the form `/** @return the customer ID */`. This is incorrect, and should be changed to `/** Returns the customer ID. */`.
 
-### 7.4 Where Javadoc is used
+### <span id="7.4">7.4 Where Javadoc is used</span>
 
 At the _minimum_, Javadoc is present for every `public` class, and every `public` or `protected` member of such a class, with a few exceptions noted below.
 
