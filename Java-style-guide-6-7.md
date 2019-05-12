@@ -154,6 +154,8 @@ Example:
     if ( (hero == theTick) &amp;&amp; isTickSidekick )
 
   </ul>
+
+  
 ### <span id="7.2">7.2 Formatting</span>
 
 #### 7.2.1 General form
