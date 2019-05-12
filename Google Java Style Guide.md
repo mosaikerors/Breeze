@@ -32,7 +32,7 @@
 [6.2 Caught exceptions: not ignored](#6.2)  
 [6.3 Static members: qualified using class](#6.3)  
 [6.4 Constructs to Avoid](#6.4)  
-[6.5 Do Not Compound Increment or Decrement Operators](#6.5)
+[6.5 Do Not Compound Increment or Decrement Operators](#6.5)    
 [6.6 Access](#6.6)
 7. [Javadoc](#7)  
 [7.1 Self-Documenting Code](#7.1)   
