@@ -1,4 +1,4 @@
-# Google Java Style Guide
+# Java Style Guide
 
 ## Table of Contents
 
@@ -39,6 +39,7 @@
 [7.2 Formatting](#7.2)  
 [7.3 The summary fragment](#7.3)  
 [7.4 Where Javadoc is use](#7.4)  
+8. [Reference](#8)
 
 ## <span id="1">1 Introduction</span>
 
@@ -857,3 +858,7 @@ Other classes and members have Javadoc _as needed or desired_.
 Whenever an implementation comment would be used to define the overall purpose or behavior of a class or member, that comment is written as Javadoc instead (using `/**`).
 
 Non-required Javadoc is not strictly required to follow the formatting rules of Sections 7.1.2, 7.1.3, and 7.2, though it is of course recommended.
+
+## <span id="8">Reference</span>
+
+- [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
