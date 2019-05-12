@@ -160,15 +160,15 @@ Example:
 
 The _basic_ formatting of Javadoc blocks is as seen in this example:
 
-/\*\*
- \* Multiple lines of Javadoc text are written here,
- \* wrapped normally...
- */
-public int method(String p1) { ... }
+    /**
+     * Multiple lines of Javadoc text are written here,
+     * wrapped normally...
+     */
+    public int method(String p1) { ... }
 
 ... or in this single-line example:
 
-/\*\* An especially short bit of Javadoc. */
+    /** An especially short bit of Javadoc. */
 
 The basic form is always acceptable. The single-line form may be substituted when the entirety of the Javadoc block (including comment markers) can fit on a single line. Note that this only applies when there are no block tags such as `@return`.
 
@@ -198,7 +198,7 @@ Additional Javadoc content may also be present, as explained in Section 7.3.4, [
 
 Javadoc is optional for "simple, obvious" methods like `getFoo`, in cases where there _really and truly_ is nothing else worthwhile to say but "Returns the foo".
 
-**Important:** it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named `getCanonicalName`, don't omit its documentation (with the rationale that it would say only `/** Returns the canonical name. */`) if a typical reader may have no idea what the term "canonical name" means!
+>**Important:** it is not appropriate to cite this exception to justify omitting relevant information that a typical reader might need to know. For example, for a method named `getCanonicalName`, don't omit its documentation (with the rationale that it would say only `/** Returns the canonical name. */`) if a typical reader may have no idea what the term "canonical name" means!
 
 #### 7.4.2 Exception: overrides
 
