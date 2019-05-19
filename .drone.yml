@@ -1,0 +1,17 @@
+kind: pipline
+name: demo
+
+steps:
+- name: node1
+  image: node:11.12.0
+  commands:
+  - echo "this is testing"
+
+- name: node2
+  image: node:11.12.0
+  commands:
+  - sleep 10
+  - echo "sleep 10"
+  when:
+    branch:
+      - dev
