@@ -13,7 +13,7 @@ In this repo is the course project of Internet Platform, 2019 Spring semester. I
 
 ### Idea
 
-Required microservices may be related to card game (like hearthstone), which will include login, buy packages, build deck and find a match.
+This is the mother of Wind Whisper.
 
 ### Coding standards
 
