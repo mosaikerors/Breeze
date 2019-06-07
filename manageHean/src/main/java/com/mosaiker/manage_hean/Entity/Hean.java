@@ -1,14 +1,16 @@
 package com.mosaiker.manage_hean.Entity;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.sql.Time;
 
-@Document(collection="notus")
+import java.util.Date;
+
+
+@Document(collection="hean")
 public class Hean {
     private long userId;
     private String title;
     private String content;
     private String position;
-    private Time time;
+    private Date time;
     private int security;
     private String appendix;
 
@@ -16,7 +18,7 @@ public class Hean {
 
     }
 
-    public Hean(long userId, String title, String content, String position,Time time,int security,String appendix){
+    public Hean(long userId, String title, String content, String position,Date time,int security,String appendix){
         this.userId = userId;
         this.title = title;
         this.content = content;
@@ -58,11 +60,11 @@ public class Hean {
         this.position = position;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

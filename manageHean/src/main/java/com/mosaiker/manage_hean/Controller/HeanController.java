@@ -29,7 +29,6 @@ public class HeanController{
 
     @PostMapping("/searchByUser")
     public List<Hean> searchByUser(@RequestParam(name = "userId")Integer userId){
-        System.out.println(userId);
         return heanService.searchByUser(userId);
     }
 
