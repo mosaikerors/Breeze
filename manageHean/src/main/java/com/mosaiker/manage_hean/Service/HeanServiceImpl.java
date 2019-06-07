@@ -19,7 +19,6 @@ public class HeanServiceImpl implements HeanService{
 
     @Override
     public List<Hean> searchByUser(long userId){
-        System.out.println(heanRepository.findByUserId(userId).size());
         return heanRepository.findByUserId(userId);
     }
 

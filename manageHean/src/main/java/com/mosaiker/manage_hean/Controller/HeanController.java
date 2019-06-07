@@ -3,6 +3,8 @@ import com.mosaiker.manage_hean.Entity.Hean;
 import com.mosaiker.manage_hean.Service.HeanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,8 +15,16 @@ public class HeanController{
     HeanService heanService;
 
     @PostMapping("/searchByTime")
-    public List<Hean> searchByTime(@RequestParam(name = "beginTime")Date beginTime, @RequestParam(name = "endTime")Date endTime){
-        return heanService.searchByTime(beginTime,endTime);
+    public List<Hean> searchByTime(@RequestParam(name = "beginTime")String beginTime, @RequestParam(name = "endTime")String endTime){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try{
+            Date beginT = sdf.parse(beginTime);
+            Date endT = sdf.parse(endTime);
+            return heanService.searchByTime(beginT,endT);
+        }
+        catch (Exception e){
+            return null;
+        }
     }
 
     @PostMapping("/searchByUser")
