@@ -1,0 +1,12 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:61455/eureka/
+server:
+  port: 6150
+spring:
+  application:
+    name: hean-service
+  data:
+    mongodb:
+      uri: mongodb://47.103.0.246:27017/notus
