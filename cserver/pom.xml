@@ -8,10 +8,10 @@
         <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>random_writer_fourth.eureka</groupId>
-    <artifactId>eureka</artifactId>
+    <groupId>com.mosaiker</groupId>
+    <artifactId>eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka</name>
+    <name>eureka-server</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
