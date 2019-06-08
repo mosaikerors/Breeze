@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(value = "eureka-sign")
+@FeignClient(value = "user-service")
 public interface AuthenticationService {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)

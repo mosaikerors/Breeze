@@ -22,11 +22,11 @@ public class TokenController {
     JSONObject getToken(@RequestBody JSONObject request) {
         // 认证
         JSONObject authenticationResult = authenticationService.authenticate(request);
-        if (authenticationResult.getString("message").equals("fail"))
+        if (authenticationResult.getString("message").equals("authentication fail"))
             return TokenUtil.constructJsonOfFail();
         // 认证成功，生成token
         String token = tokenService.createToken(
-                request.getString("username"), authenticationResult.getString("role"));
+                request.getString("phone"), authenticationResult.getString("role"));
 
         return TokenUtil.constructJsonOfSuccess(token);
     }

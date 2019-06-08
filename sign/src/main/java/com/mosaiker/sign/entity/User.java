@@ -12,6 +12,7 @@ public class User {
     private String password;
     private long phone;
     private String code;
+    //status: -1: unactivated, 0: banned, 1: player, 2: admin, 3: third party
     private int status;
 
     @Id

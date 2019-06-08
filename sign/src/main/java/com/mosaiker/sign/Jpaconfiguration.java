@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
-@Configuration
+//@Configuration
 @EnableTransactionManagement(proxyTargetClass = true)
 @EnableJpaRepositories(basePackages = "com.mosaiker.sign")
 @EntityScan(basePackages = "com.mosaiker.sign.entity")

@@ -1,12 +1,12 @@
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:6000/eureka/
+      defaultZone: http://localhost:61455/eureka/
 server:
-  port: 6001
+  port: 6140
 spring:
   application:
-    name: eureka-sign
+    name: user-service
 
   datasource:
     url: jdbc:mysql://localhost:3306/notus?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true

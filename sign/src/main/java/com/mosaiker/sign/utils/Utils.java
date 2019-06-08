@@ -11,6 +11,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Utils {
+
     public static String randomNumber(int num) {
         if (num <= 0) {
             return null;
@@ -70,4 +71,5 @@ public class Utils {
         }
         return false;
     }
+
 }
