@@ -1,0 +1,11 @@
+server:
+  port: 5998
+
+spring:
+  application:
+    name: eureka-sign
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:6000/eureka/

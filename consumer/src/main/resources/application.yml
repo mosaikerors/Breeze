@@ -3,10 +3,7 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:61455/eureka/
 server:
-  port: 6150
+  port: 6180
 spring:
   application:
-    name: manage_hean
-  data:
-    mongodb:
-      uri: mongodb://47.103.0.246:27017/notus
+    name: consumer

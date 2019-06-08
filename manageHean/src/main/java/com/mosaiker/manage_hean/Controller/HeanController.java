@@ -1,6 +1,8 @@
 package com.mosaiker.manage_hean.Controller;
+import com.alibaba.fastjson.JSONArray;
 import com.mosaiker.manage_hean.Entity.Hean;
 import com.mosaiker.manage_hean.Service.HeanService;
+import com.mosaiker.manage_hean.util.HeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,16 +13,18 @@ import java.util.List;
 @RequestMapping("/manage_hean")
 @RestController
 public class HeanController{
+
     @Autowired
     HeanService heanService;
 
     @PostMapping("/searchByTime")
-    public List<Hean> searchByTime(@RequestParam(name = "beginTime")String beginTime, @RequestParam(name = "endTime")String endTime){
+    public JSONArray searchByTime(@RequestParam(name = "beginTime") String beginTime,
+                                  @RequestParam(name = "endTime") String endTime) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        try{
+        try {
             Date beginT = sdf.parse(beginTime);
             Date endT = sdf.parse(endTime);
-            return heanService.searchByTime(beginT,endT);
+            return HeanUtil.convertHeanListToJson(heanService.searchByTime(beginT,endT));
         }
         catch (Exception e){
             return null;
@@ -28,12 +32,17 @@ public class HeanController{
     }
 
     @PostMapping("/searchByUser")
-    public List<Hean> searchByUser(@RequestParam(name = "userId")Integer userId){
-        return heanService.searchByUser(userId);
+    public JSONArray searchByUser(@RequestParam(name = "userId") Integer userId) {
+        //return HeanUtil.convertHeanListToJson(heanService.searchByUser(userId));
+        JSONArray e = new JSONArray();
+        e.add(userId);
+        return e;
     }
 
     @PostMapping("/searchByPosition")
-    public List<Hean> searchByPosition(@RequestParam(name = "position")String position,@RequestParam(name="range")float range){
-        return heanService.searchByPosition(position, range);
+    public JSONArray searchByPosition(@RequestParam(name = "position") String position,
+                                      @RequestParam(name = "range") float range) {
+        return HeanUtil.convertHeanListToJson(heanService.searchByPosition(position, range));
     }
+
 }

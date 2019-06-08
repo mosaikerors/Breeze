@@ -9,8 +9,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @EnableEurekaClient
-@EnableDiscoveryClient
-@EnableFeignClients
 public class ManageHeanApplication {
 
     public static void main(String[] args) {
