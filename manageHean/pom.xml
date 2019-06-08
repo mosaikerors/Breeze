@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mosaiker</groupId>
-    <artifactId>manage_hean</artifactId>
+    <artifactId>manage-hean</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>manage_hean</name>
+    <name>manage-hean</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

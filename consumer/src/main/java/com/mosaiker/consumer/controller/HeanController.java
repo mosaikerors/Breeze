@@ -21,21 +21,19 @@ public class HeanController {
 
     @RequestMapping(value = "/byTime", method = RequestMethod.POST)
     public ResponseEntity<JSONObject> searchByTime(@RequestBody JSONObject request) {
-        JSONArray heanList = heanService.searchByTime(
-                request.getString("beginTime"), request.getString("endTime"));
+        JSONArray heanList = heanService.searchByTime(request);
         return new ResponseEntity<JSONObject>(HeanUtil.constructJsonOfHeanList(heanList), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/byUser", method = RequestMethod.POST)
     public ResponseEntity<JSONObject> searchByUser(@RequestBody JSONObject request) {
-        JSONArray heanList = heanService.searchByUser(request.getInteger("userId"));
+        JSONArray heanList = heanService.searchByUser(request);
         return new ResponseEntity<JSONObject>(HeanUtil.constructJsonOfHeanList(heanList), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/byPosition", method = RequestMethod.POST)
     public ResponseEntity<JSONObject> searchByPosition(@RequestBody JSONObject request) {
-        JSONArray heanList = heanService.searchByPosition(
-                request.getString("position")/*, request.getFloat("range")*/);
+        JSONArray heanList = heanService.searchByPosition(request);
         return new ResponseEntity<JSONObject>(HeanUtil.constructJsonOfHeanList(heanList), HttpStatus.OK);
     }
 
