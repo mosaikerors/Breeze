@@ -24,8 +24,34 @@ public class User {
     /*u_id
      * 0:封禁 1：普通用户 -1：未激活 2：管理员
      */
-    private Integer status = -1;
+    private int status = -1;
 
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }

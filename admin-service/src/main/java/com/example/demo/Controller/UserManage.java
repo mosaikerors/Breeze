@@ -17,15 +17,7 @@ public class UserManage {
     @Autowired
     private UserInfoService userInfoService;
 
-    @GetMapping(value = "/Edit")
-    public String toEdit(String phone, Map<String, Object> map) {
-        User user = userInfoService.queryByPhone(phone);
-        map.put("user", user);
-        return "admin/user/edit";
-    }
-
-
-    @RequestMapping("/Userlist")
+    @RequestMapping(value = "/Userlist", method = RequestMethod.GET)
     public JSONObject findAllUser(@RequestParam int pageIndex, @RequestParam int pageSize) {
         Pageable pageable = PageRequest.of(pageIndex, pageSize);
         List<User> users = userInfoService.findAll(pageable).getContent();
@@ -35,7 +27,7 @@ public class UserManage {
     }
 
 
-    @GetMapping("/GetTotal")
+    @RequestMapping(value = "/GetTotal", method = RequestMethod.GET)
     public JSONObject getTotal() {
         Pageable pageable = PageRequest.of(1, 15);
         int total = (int) userInfoService.findAll(pageable).getTotalElements();
@@ -44,7 +36,7 @@ public class UserManage {
         return result;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/ViewDetail")
+    @RequestMapping(value = "/ViewDetail", method = RequestMethod.POST)
     public JSONObject showDetail(@RequestBody JSONObject param){
         String u_id = param.getString("u_id");
         User user=userInfoService.queryById(u_id);
@@ -53,7 +45,7 @@ public class UserManage {
         return result;
     }
 
-    @PutMapping("/Manage")
+    @RequestMapping(value = "/Manage", method = RequestMethod.PUT)
     public JSONObject changeStatus(@RequestParam JSONObject param) {
         String phone = param.getString("phone");
         User user=userInfoService.queryByPhone(phone);
@@ -65,7 +57,7 @@ public class UserManage {
         return result;
     }
 
-    @PutMapping(value = "/Update")
+    @RequestMapping(value = "/Update", method = RequestMethod.PUT)
     public JSONObject update(@RequestBody JSONObject param) {
         String username = param.getString("username");
         String password = param.getString("password");
