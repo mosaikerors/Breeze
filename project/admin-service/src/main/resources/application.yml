@@ -8,18 +8,10 @@ server:
 
 spring:
   application:
-    name: admin-manage
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 100MB
-      max-request-size: 100MB
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
+    name: admin-service
   data:
     mongodb:
       database: notus
-      host: 47.102.0.246
-      port: 4399
+      host: 47.103.0.246
+      port: 27017
       password: mosaiker
