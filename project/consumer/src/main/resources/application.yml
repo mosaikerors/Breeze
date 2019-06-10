@@ -6,4 +6,7 @@ server:
   port: 6180
 spring:
   application:
-    name: consumer
+    name: feign-consumer
+feign:
+  hystrix:
+    enabled: true

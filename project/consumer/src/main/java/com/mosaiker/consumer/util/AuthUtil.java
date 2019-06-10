@@ -17,4 +17,10 @@ public class AuthUtil {
         return json;
     }
 
+    public static JSONObject attachTokenToUser(String token, JSONObject user) {
+        JSONObject json = user;
+        json.put("token", token);
+        return json;
+    }
+
 }
