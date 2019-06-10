@@ -7,36 +7,38 @@ import com.example.demo.Entity.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service("userInfoService")
 public interface UserInfoService {
-    void batchSave(List<User> studentList);
 
-    User queryByPhone(String phone);
-    Page<User> findAll(Pageable pageable);
+  //save a batch of userinfos
+  void batchSave(List<User> userList);
 
-    Page<User> queryByUsernameAndPage(int page, int rows, String name);
+  User queryByPhone(String phone);
 
-    List<User> queryByUsernameLike(String name);
+  Page<User> findAll(Pageable pageable);
 
-    List<User> queryByPhoneLike(String phone);
-    Page<User> queryByPhoneAndPage(int page, int rows, String name);
+  Page<User> queryByUsernameAndPage(int page, int rows, String name);
 
-    List<User> findAllExample(Example<User> example);
-    User queryById(String id);
+  List<User> queryByUsernameLike(String name);
 
-    void update(User user);
+  List<User> queryByPhoneLike(String phone);
 
+  Page<User> queryByPhoneAndPage(int page, int rows, String name);
 
-    String create(User user);
+  List<User> findAllExample(Example<User> example);
 
+  User queryById(String id);
+  //update userInfo
+  void update(User user);
 
-    void delByPhone(String phone);
+  String create(User user);
 
+  void delByPhone(String phone);
 
-    List<User> findByUsername(String username);
+  List<User> findByUsername(String username);
 
-
-    User checkLogin(String username, String password);
+  User checkLogin(String username, String password);
 }
 
 
