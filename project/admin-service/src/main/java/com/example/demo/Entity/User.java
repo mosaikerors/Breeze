@@ -1,8 +1,8 @@
 package com.example.demo.Entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "User")
 public class User {
@@ -18,6 +18,20 @@ public class User {
      * 0:封禁 1：普通用户 -1：未激活 2：管理员
      */
     private int status = -1;
+
+    public User(String u_id, String username, String password, String email, String phone) {
+        this.u_id = u_id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+    }
+
+    public String getU_id() {return u_id;}
+
+    public void setU_id(String u_id) {
+        this.u_id = u_id;
+    }
 
     public int getStatus() {
         return status;

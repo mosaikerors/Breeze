@@ -1,10 +1,9 @@
 package com.mosaiker.consumer.controller;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.mosaiker.consumer.service.HeanService;
+import com.mosaiker.consumer.service.AuthService;
 import com.mosaiker.consumer.service.UserService;
-import com.mosaiker.consumer.util.HeanUtil;
+import com.mosaiker.consumer.util.AuthUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,33 +16,24 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/showByPage", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> findByPage(@RequestParam int pageIndex, @RequestParam int pageSize) {
-        JSONObject result = userService.findAllUser(pageIndex, pageSize);
-        return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
+    @Autowired
+    AuthService authService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<JSONObject> login(@RequestBody JSONObject params) {
+        JSONObject response = AuthUtil.attachTokenToUser(
+                authService.getToken(params).getString("token"), userService.login(params));
+        return new ResponseEntity<JSONObject>(response, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/getTotal", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> getTotal() {
-        JSONObject result = userService.getTotal();
-        return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public ResponseEntity<JSONObject> signup(@RequestBody JSONObject params) {
+        return new ResponseEntity<JSONObject>(userService.signup(params), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/showByPage", method = RequestMethod.POST)
-    public ResponseEntity<JSONObject> showDetail(@RequestBody JSONObject param) {
-        JSONObject result = userService.showDetail(param);
-        return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
+    @RequestMapping(value = "/activate", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> activate(@RequestParam String code) {
+        return new ResponseEntity<JSONObject>(userService.activate(code), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/showByPage", method = RequestMethod.PUT)
-    public ResponseEntity<JSONObject> changeStatus(@RequestBody JSONObject param) {
-        JSONObject result = userService.changeStatus(param);
-        return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/showByPage", method = RequestMethod.PUT)
-    public ResponseEntity<JSONObject> update(@RequestBody JSONObject param) {
-        JSONObject result = userService.update(param);
-        return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
-    }
 }

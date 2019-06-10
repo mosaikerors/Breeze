@@ -44,9 +44,10 @@ public class UserInfoController {
 
     // 封禁/解禁用户
     @RequestMapping(value = "/toggle", method = RequestMethod.PUT)
-    public JSONObject toggleStatus(@RequestParam JSONObject param) {
+    public JSONObject toggleStatus(@RequestBody JSONObject param) {
         String phone = param.getString("phone");
         User user = userInfoService.queryByPhone(phone);
+        System.out.println(user.getU_id());
         int i = ((user.getStatus() == 0) ? -1 : 0);   // toggle status
         user.setStatus(i);
         userInfoService.update(user);

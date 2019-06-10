@@ -1,11 +1,11 @@
 server:
-  port: 6002
+  port: 6170
 
 spring:
   application:
-    name: eureka-auth
+    name: auth-service
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:6000/eureka/
+      defaultZone: http://localhost:61455/eureka/

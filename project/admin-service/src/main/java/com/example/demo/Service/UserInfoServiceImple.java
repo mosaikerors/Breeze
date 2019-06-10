@@ -15,7 +15,10 @@ public class UserInfoServiceImple implements UserInfoService {
 
     @Override
     public User queryByPhone(String phone) {
-        return userInfoRepository.findById(phone).orElse(null);
+        System.out.println(userInfoRepository.findByPhone(phone));
+        if (!userInfoRepository.existsByPhone(phone))
+            return null;
+        return userInfoRepository.findByPhone(phone);
     }
 
     @Override

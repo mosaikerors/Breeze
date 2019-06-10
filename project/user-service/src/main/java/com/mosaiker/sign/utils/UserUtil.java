@@ -63,7 +63,7 @@ public class UserUtil {
         String role = "";
         switch (status) {
             case 1:
-                role = "PLAYER"; break;
+                role = "USER"; break;
             case 2:
                 role = "ADMIN"; break;
             case 3:
