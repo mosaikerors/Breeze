@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:61455/eureka/
+
+server:
+  port: 6160
+
+spring:
+  application:
+    name: admin-service
+  data:
+    mongodb:
+      database: notus
+      host: 47.103.0.246
+      port: 27017
+      password: mosaiker

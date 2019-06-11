@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistenceUnit"/>
+    <persistence-unit name="Entity">
+        <class>com.mosaiker.sign.entity.Admin</class>
+        <class>com.mosaiker.sign.entity.Player</class>
+        <class>com.mosaiker.sign.entity.Thirdparty</class>
+        <class>com.mosaiker.sign.entity.User</class>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/notus"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>
