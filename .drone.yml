@@ -2,7 +2,7 @@ kind: pipline
 name: Breeze
 
 steps:
-- name: test-service
+- name: test services
   image: maven
   volumes:
   - name: dependency
@@ -10,25 +10,118 @@ steps:
 # - name: configuration
 #   path: /drone/src/back-end/src/main/resources/application.yml
   commands:
-#  - cd project/admin-service
-#  - mvn clean
-#  - mvn package
-#  - echo "test and package admin-service completed ✔✔✔"
+  - cd project/admin-service
+  - mvn clean
+  - mvn package
+  - echo "test and package admin-service completed 🙂🙂🙂"
+  - cd ../hean-service
+  - mvn clean
+  - mvn package
+  - echo "test and package hean-service completed 🙂🙂🙂"
+  - cd ../user-service
+  - mvn clean
+  - mvn package
+  - echo "test and package user-service completed 🙂🙂🙂"
+
+- name: upload admin-service
+  image: appleboy/drone-scp
+  settings:
+    host: 101.132.176.33
+    username: root
+    password:
+      from_secret: xyx_password
+    rm: true
+    target: /home/Breeze
+    source:
+    - project/admin-service/target/docker_spring_boot.jar
+    - project/admin-service/Dockerfile
+
+- name: deploy admin-service
+  image: appleboy/drone-ssh
+  settings:
+    host: 101.132.176.33
+    username: root
+    password:
+      from_secret: xyx_password
+    script:
+    - cd /home/Breeze/project/admin-service/target
+    - cp ../Dockerfile .
+    - docker build -t breeze-admin-service .
+    - docker rm -f breeze-admin-service-c
+    - docker run -d --name breeze-admin-service-c -p 6160:6160 breeze-admin-service
+
+- name: upload hean-service
+  image: appleboy/drone-scp
+  settings:
+    host: 47.102.205.224
+    username: root
+    password:
+      from_secret: czn_password
+    rm: true
+    target: /home/Breeze
+    source:
+    - project/hean-service/target/docker_spring_boot.jar
+    - project/hean-service/Dockerfile
+
+- name: deploy hean-service
+  image: appleboy/drone-ssh
+  settings:
+    host: 47.102.205.224
+    username: root
+    password:
+      from_secret: czn_password
+    script:
+    - cd /home/Breeze/project/hean-service/target
+    - cp ../Dockerfile .
+    - docker build -t breeze-hean-service .
+    - docker rm -f breeze-hean-service-c
+    - docker run -d --name breeze-hean-service-c -p 6150:6150 breeze-hean-service
+
+- name: upload user-service
+  image: appleboy/drone-scp
+  settings:
+    host: 47.103.0.246
+    username: root
+    password:
+      from_secret: yjy_password
+    rm: true
+    target: /home/Breeze
+    source:
+    - project/user-service/target/docker_spring_boot.jar
+    - project/user-service/Dockerfile
+
+- name: deploy user-service
+  image: appleboy/drone-ssh
+  settings:
+    host: 47.103.0.246
+    username: root
+    password:
+      from_secret: yjy_password
+    script:
+    - cd /home/Breeze/project/user-service/target
+    - cp ../Dockerfile .
+    - docker build -t breeze-user-service .
+    - docker rm -f breeze-user-service-c
+    - docker run -d --name breeze-user-service-c -p 6140:6140 breeze-user-service
+
+- name: test feigns
+  image: maven
+  volumes:
+  - name: dependency
+    path: /root/.m2
+# - name: configuration
+#   path: /drone/src/back-end/src/main/resources/application.yml
+  commands:
   - cd project/auth-service
   - mvn clean
   - mvn package
-  - echo "test and package auth-service completed ✔✔✔"
-#  - cd ../hean-service
-#  - mvn clean
-#  - mvn package
-#  - echo "test and package hean-service completed ✔✔✔"
-#  - cd ../user-service
-#  - mvn clean
-#  - mvn package
-#  - echo "test and package user-service completed ✔✔✔"
-  - echo "test and package all services completed 😃😃😃"
+  - echo "test and package auth-service completed 🙂🙂🙂"
+  - cd ../consumer
+  - mvn clean
+  - mvn package
+  - echo "test and package consumer completed 🙂🙂🙂"
 
-- name: upload-auth-service
+- name: upload feigns
   image: appleboy/drone-scp
   settings:
     host: 47.100.126.180
@@ -40,8 +133,10 @@ steps:
     source:
     - project/auth-service/target/docker_spring_boot.jar
     - project/auth-service/Dockerfile
+    - project/consumer/target/docker_spring_boot.jar
+    - project/consumer/Dockerfile
 
-- name: deploy-auth-service
+- name: deploy feigns
   image: appleboy/drone-ssh
   settings:
     host: 47.100.126.180
@@ -54,5 +149,8 @@ steps:
     - docker build -t breeze-auth-service .
     - docker rm -f breeze-auth-service-c
     - docker run -d --name breeze-auth-service-c -p 6170:6170 breeze-auth-service
-
-
+    - cd /Gusabary/Breeze/project/consumer/target
+    - cp ../Dockerfile .
+    - docker build -t breeze-consumer .
+    - docker rm -f breeze-consumer-c
+    - docker run -d --name breeze-consumer-service-c -p 6180:6180 breeze-consumer-service
