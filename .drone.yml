@@ -10,7 +10,49 @@ steps:
 # - name: configuration
 #   path: /drone/src/back-end/src/main/resources/application.yml
   commands:
-  - cd project/auth-service
+#  - cd project/admin-service
+#  - mvn clean
+#  - mvn package
+#  - echo "test and package admin-service completed ✔✔✔"
+  - cd ../auth-service
   - mvn clean
   - mvn package
   - echo "test and package auth-service completed ✔✔✔"
+#  - cd ../hean-service
+#  - mvn clean
+#  - mvn package
+#  - echo "test and package hean-service completed ✔✔✔"
+#  - cd ../user-service
+#  - mvn clean
+#  - mvn package
+#  - echo "test and package user-service completed ✔✔✔"
+  - echo "test and package all services completed 😃😃😃"
+
+- name: upload-auth-service
+  image: appleboy/drone-scp
+  settings:
+    host: 47.100.126.180
+    username: root
+    password:
+      from_secret: tbc_password
+    rm: true
+    target: /Gusabary/Breeze
+    source:
+    - project/auth-service/target/docker_spring_boot.jar
+    - project/auth-service/Dockerfile
+
+- name: deploy-auth-service
+  image: appleboy/drone-ssh
+  settings:
+    host: 47.100.126.180
+    username: root
+    password:
+      from_secret: tbc_password
+    script:
+    - cd /Gusabary/Breeze/project/auth-service/target
+    - cp ../Dockerfile .
+    - docker build -t breeze-auth-service .
+    - docker rm -f breeze-auth-service-c
+    - docker run -d --name breeze-auth-service-c -p 6170:6170 breeze-auth-service
+
+
