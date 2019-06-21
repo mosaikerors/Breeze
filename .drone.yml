@@ -14,7 +14,7 @@ steps:
 #  - mvn clean
 #  - mvn package
 #  - echo "test and package admin-service completed ✔✔✔"
-  - cd ../auth-service
+  - cd project/auth-service
   - mvn clean
   - mvn package
   - echo "test and package auth-service completed ✔✔✔"
