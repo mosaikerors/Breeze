@@ -41,6 +41,7 @@ public class UserUtil {
     public static Player createPlayerFromUser(User user) {
         Player player = new Player();
         player.setuId(user.getuId());
+        player.setPhone(user.getPhone());
         return player;
     }
 

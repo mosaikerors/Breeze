@@ -9,14 +9,14 @@ import org.springframework.dao.annotation.PersistenceExceptionTranslationPostPro
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
-//@Configuration
-@EnableTransactionManagement(proxyTargetClass = true)
-@EnableJpaRepositories(basePackages = "com.mosaiker.sign")
-@EntityScan(basePackages = "com.mosaiker.sign.entity")
-public class Jpaconfiguration {
-    @Bean
-    PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
-}
+//@Order(Ordered.HIGHEST_PRECEDENCE)
+////@Configuration
+//@EnableTransactionManagement(proxyTargetClass = true)
+//@EnableJpaRepositories(basePackages = "com.mosaiker.sign")
+//@EntityScan(basePackages = "com.mosaiker.sign.entity")
+//public class Jpaconfiguration {
+//    @Bean
+//    PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
+//        return new PersistenceExceptionTranslationPostProcessor();
+//    }
+//}
