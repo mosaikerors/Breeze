@@ -8,10 +8,19 @@ server:
 
 spring:
   application:
-    name: admin-service
-  data:
-    mongodb:
-      database: notus
-      host: 47.103.0.246
-      port: 27017
-      password: mosaiker
+    name: admin-manage
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  jpa:
+    properties:
+      hibernate:
+        database: breeze
+        host: 101.132.176.33
+        port: 3306
+        password: mosaiker
