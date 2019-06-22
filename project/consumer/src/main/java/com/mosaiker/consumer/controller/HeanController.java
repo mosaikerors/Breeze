@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.*;
 public class HeanController {
 
     @Autowired
-    HeanService heanService;
+    private HeanService heanService;
 
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     private static final String ADMIN = "ADMIN";
 
     @RequestMapping(value = "/byTime", method = RequestMethod.POST)
-    public ResponseEntity<JSONObject> searchByTime(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> searchByTime(@RequestHeader(name = "Authorization") String token,
                                                    @RequestBody JSONObject request) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
@@ -33,7 +33,7 @@ public class HeanController {
     }
 
     @RequestMapping(value = "/byUser", method = RequestMethod.POST)
-    public ResponseEntity<JSONObject> searchByUser(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> searchByUser(@RequestHeader(name = "Authorization") String token,
                                                    @RequestBody JSONObject request) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
@@ -42,7 +42,7 @@ public class HeanController {
     }
 
     @RequestMapping(value = "/byPosition", method = RequestMethod.POST)
-    public ResponseEntity<JSONObject> searchByPosition(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> searchByPosition(@RequestHeader(name = "Authorization") String token,
                                                        @RequestBody JSONObject request) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);

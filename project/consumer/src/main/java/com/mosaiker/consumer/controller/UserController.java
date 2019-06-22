@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<JSONObject> login(@RequestBody JSONObject params) {

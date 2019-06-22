@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 public class TokenController {
 
     @Autowired
-    AuthenticationService authenticationService;
+    private AuthenticationService authenticationService;
 
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
 
     // 请求体中包含 username 和 password, 如果认证成功，生成并返回 token。
     @RequestMapping(value = "/get", method = RequestMethod.POST)
-    JSONObject getToken(@RequestBody JSONObject request) {
+    public JSONObject getToken(@RequestBody JSONObject request) {
         // 认证
         JSONObject authenticationResult = authenticationService.authenticate(request);
         if (authenticationResult.getString("message").equals("authentication fail"))
@@ -33,7 +33,7 @@ public class TokenController {
 
     // 请求体中包含 token 和要求的身份，如果 token 符合该身份要求，返回 true。
     @RequestMapping(value = "/verify", method = RequestMethod.POST)
-    boolean verifyToken(@RequestBody JSONObject request) {
+    public boolean verifyToken(@RequestBody JSONObject request) {
         return tokenService.verifyToken(request.getString("token"), request.getString("role"));
     }
 
