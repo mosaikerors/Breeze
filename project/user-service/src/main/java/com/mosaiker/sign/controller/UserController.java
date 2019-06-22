@@ -25,7 +25,6 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public JSONObject login(@RequestBody JSONObject params) {
         User user = userService.findUserByPhone(params.getLong("phone"));
-
         if (user == null || user.getStatus() == 0)
             return UserUtil.constructJsonOfWrong("nonexistent or unactivated user");
 
@@ -34,7 +33,6 @@ public class UserController {
 
         if (user.getStatus() == -1)
             return UserUtil.constructJsonOfWrong("The user has been banned.");
-
         return UserUtil.constructJsonOfSuccessfulLogin(user.getUsername(), user.getStatus());
     }
 

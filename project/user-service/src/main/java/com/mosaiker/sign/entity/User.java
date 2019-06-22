@@ -15,6 +15,18 @@ public class User {
     //status: -1: unactivated, 0: banned, 1: player, 2: admin, 3: third party
     private int status;
 
+    public User() {
+
+    }
+
+    public User(String username, String password, long phone, String code, int status) {
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.code = code;
+        this.status = status;
+    }
+
     @Id
     @Column(name = "u_id", nullable = false)
     public long getuId() {
