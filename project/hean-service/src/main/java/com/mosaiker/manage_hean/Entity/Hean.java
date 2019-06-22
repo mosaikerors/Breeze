@@ -52,11 +52,11 @@ public class Hean {
         this.content = content;
     }
 
-    public String getPostion() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPostion(String position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
