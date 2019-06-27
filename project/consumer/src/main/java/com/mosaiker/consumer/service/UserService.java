@@ -11,16 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Primary  // 因为引入 fallback 类，出现两个同类 Bean，所以不加 @Primary 会导致 @Autowired 有红色波浪线（尽管不影响运行）
 @FeignClient(value = "user-service")
-@RequestMapping(value = "/api/user")  // 这里 url 公共的部分不能用 RequestMappnig，要用 @FeignClient 的 path 属性
 public interface UserService {
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/user/login", method = RequestMethod.POST)
     JSONObject login(@RequestBody JSONObject params);
-
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    JSONObject signup(@RequestBody JSONObject params);
-
-    @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    JSONObject activate(@RequestParam String code);
 
 }
