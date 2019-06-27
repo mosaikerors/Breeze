@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class HeanServiceImpl implements HeanService{
     @Autowired
-    public HeanRepository heanRepository;
+    private HeanRepository heanRepository;
 
     @Override
     public  List<Hean> searchByTime(Date beginTime, Date endTime){

@@ -12,5 +12,4 @@ public class HeanUtil {
         heanList.forEach(hean -> json.add(hean));
         return json;
     }
-
 }
