@@ -3,17 +3,15 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:61455/eureka/
 
-
 server:
   port: 6160
-
 
 spring:
   jpa:
     hibernate:
       ddl-auto: update
   application:
-    name: admin-manage
+    name: admin-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.103.0.246:4399/notus?useSSL=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
