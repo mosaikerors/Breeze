@@ -2,32 +2,41 @@ package com.example.demo.Entity;
 
 
 import lombok.Data;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import javax.persistence.*;
 
 
-@Document(collection = "User")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
 @Data
+@Entity
 public class User {
 
   @Id
   @GeneratedValue
-  private String u_id;
+  private long id;
+  @Column
   private String username;
+  @Column
   private String password;
-  private String email;
+
   @Column(unique = true)
-  private String phone;
+  private Long phone;
   /*u_id
    * 0:封禁 1：普通用户 -1：未激活 2：管理员
    */
+  @Column
   private int status = -1;
+  private static final long serialVersionUID = 1L;
 
-  public User(String username, String password, String email, String phone, int status) {
+  public User(){
+
+  }
+  public User(String username, String password, Long phone, int status) {
     this.username = username;
     this.password = password;
-    this.email = email;
     this.phone = phone;
     this.status = status;
   }
@@ -51,16 +60,13 @@ public class User {
     this.password = password;
   }
 
-  public String getPhone() {
+  public Long getPhone() {
     return phone;
   }
 
-  public void setPhone(String phone) {
+  public void setPhone(Long phone) {
     this.phone = phone;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
 
 }

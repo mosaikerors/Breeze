@@ -4,8 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Service.UserInfoService;
 import com.example.demo.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,7 +35,7 @@ public class UserManage {
   //return the user detail infos
   @RequestMapping(value = "/ViewDetail", method = RequestMethod.POST)
   public JSONObject showDetail(@RequestBody JSONObject param) {
-    String phone = param.getString("phone");
+    Long phone = param.getLong("phone");
     User user = userInfoService.queryByPhone(phone);
     JSONObject result = new JSONObject();
     result.put("user", user);
@@ -46,7 +44,7 @@ public class UserManage {
   //set or lift the ban of user
   @RequestMapping(value = "/Manage", method = RequestMethod.POST)
   public JSONObject changeStatus(@RequestParam JSONObject param) {
-    String phone = param.getString("phone");
+    Long phone = param.getLong("phone");
     User user = userInfoService.queryByPhone(phone);
     int i = ((user.getStatus() == 0) ? -1 : 0);
     user.setStatus(i);
@@ -61,13 +59,11 @@ public class UserManage {
     String username = param.getString("username");
     String password = param.getString("password");
     Integer state = param.getInteger("status");
-    String phone = param.getString("phone");
-    String email = param.getString("email");
+    Long phone = param.getLong("phone");
     User user = userInfoService.queryByPhone(phone);
     user.setStatus(state);
     user.setUsername(username);
     user.setPassword(password);
-    user.setEmail(email);
     user.setPhone(phone);
     userInfoService.update(user);
     JSONObject result = new JSONObject();

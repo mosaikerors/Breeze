@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -46,8 +48,8 @@ public class UtilTest {
   @Parameters
   public static Collection usernameData() {
     return Arrays.asList(new Object[][]{{Arrays.asList("1", "2", "3", "4"), 2,
-        Arrays.asList(Arrays.asList("1", "2"), Arrays.asList("3", "4"))},
-        {Arrays.asList("1", "2", "3", "4"), 4, Arrays.asList("1", "2", "3", "4")},
+        Arrays.asList(Arrays.asList("1", "2"), Arrays.asList("3", "4"), new ArrayList<>())},
+        {Arrays.asList("1", "2", "3", "4"), 4, Arrays.asList(Arrays.asList("1", "2", "3", "4"),new ArrayList<>())},
         {Arrays.asList("1", "2", "3", "4"), 3,
             Arrays.asList(Arrays.asList("1", "2", "3"), Arrays.asList("4"))}});
 

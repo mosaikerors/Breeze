@@ -8,21 +8,21 @@ import java.util.List;
 @Service("userInfoService")
 public interface UserInfoService {
 
-  User queryByPhone(String phone);
+
+  User queryByPhone(Long phone);
 
   List<User> findAll();
 
-  User queryById(String id);
+  User queryById(Long id);
 
   //update userInfo
-  void update(User user);
+  User update(User user);
 
   //save a batch of userinfos
   void batchSave(List<User> userList);
 
   List<User> queryByUsernameLike(String name);
 
-  List<User> queryByPhoneLike(String phone);
 
   List<User> findByUsername(String username);
 

@@ -6,21 +6,19 @@ eureka:
 server:
   port: 6160
 
+
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
   application:
     name: admin-manage
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 100MB
-      max-request-size: 100MB
-  jackson:
-    time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
-  jpa:
-    properties:
-      hibernate:
-        database: breeze
-        host: 101.132.176.33
-        port: 3306
-        password: mosaiker
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.103.0.246:4399/notus?useSSL=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    username: root
+    password: kty141
+
+
+
+

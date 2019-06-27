@@ -1,45 +1,48 @@
 package com.example.demo.Service;
 
-import com.example.demo.UserInfoRepository;
+import com.example.demo.Dao.UserInfoRepository;
 import com.example.demo.Entity.User;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Component;
+
 import com.example.demo.Util;
 
 import java.util.List;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserInfoServiceImple implements UserInfoService {
 
   //max numbers for userinfos to save one time
   private int BATCH_RECORD_COUNT = 2000;
   @Autowired
   private UserInfoRepository userInfoRepository;
-  @Autowired
-  private MongoTemplate mongoTemplate;
+  //@Autowired
+  //private MongoTemplate mongoTemplate;
 
 
   @Override
-  public User queryByPhone(String phone) {
+  public User queryByPhone(Long phone) {
     return userInfoRepository.findByPhone(phone);
   }
 
   @Override
   public void batchSave(List<User> userList) {
-    List<List<User>> groupList = Util.fixedGrouping(userList, BATCH_RECORD_COUNT);
-    for (List<User> list : groupList) {
-      mongoTemplate.insert(list, User.class);
+    try {
+      List<List<User>> groupList = Util.fixedGrouping(userList, BATCH_RECORD_COUNT);
+      for (List<User> list : groupList) {
+        userInfoRepository.saveAll(list);
+      }
+    }catch(DataAccessException dae) {
+      throw dae;
     }
   }
 
   @Override
-  public User queryById(String id) {
-    return userInfoRepository.findById(id).orElse(null);
+  public User queryById(Long id) {
+    Optional<User> opt=userInfoRepository.findById(id);
+    return opt.orElse(null);
   }
 
   @Override
@@ -48,18 +51,13 @@ public class UserInfoServiceImple implements UserInfoService {
   }
 
   @Override
-  public List<User> queryByPhoneLike(String phone) {
-    return userInfoRepository.findByPhoneLike(phone);
-  }
-
-  @Override
   public List<User> findAll() {
     return userInfoRepository.findAll();
   }
 
   @Override
-  public void update(User user) {
-    userInfoRepository.save(user);
+  public User update(User user) {
+    return userInfoRepository.save(user);
   }
 
   @Override
