@@ -9,7 +9,7 @@ const User = {
             .then(res => res.body)
     },
     login: (phone, password) =>
-        requests.post('/user/login')
+        requests.post(API_ROOT + '/user/login')
             .send({ phone, password })
             .then(res => res.body)
 }

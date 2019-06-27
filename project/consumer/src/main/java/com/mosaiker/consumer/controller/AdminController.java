@@ -24,8 +24,8 @@ public class AdminController {
 
     @RequestMapping(value = "/showAll", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> findByPage(@RequestHeader(name = "Authorization") String token) {
-        //if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
-          //  return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
+        if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
+            return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
         JSONObject result = adminService.findAllUser();
         return new ResponseEntity<JSONObject>(result, HttpStatus.OK);
     }

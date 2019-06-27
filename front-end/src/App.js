@@ -19,7 +19,8 @@ class App extends React.Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
-    handleClickHean() {
+    async handleClickHean() {
+        console.log(await agent.Hean.showAll(this.state.token))
         this.setState({
             heans: agent.Hean.showAll(this.state.token),
             users: []
@@ -33,8 +34,9 @@ class App extends React.Component {
         })
     }
 
-    handleClickLogin() {
-        const resp = agent.User.login(this.state.phone, this.state.password);
+    async handleClickLogin() {
+        console.log(await agent.User.login(this.state.phone, this.state.password))
+        const resp = await agent.User.login(this.state.phone, this.state.password);
         console.log(resp.token);
         this.setState({
             token: resp.token
@@ -71,6 +73,7 @@ class App extends React.Component {
                 <br />
                 <Button
                     variant='contained'
+                    onClick={this.handleClickLogin}
                 >
                     login
                 </Button>
@@ -95,7 +98,7 @@ class App extends React.Component {
                         <div>
                             <p>userId:{hean.userId}</p>
                             <p>content:{hean.content}</p>
-                            <p>appendix:{hean.appendix}</p>
+                            <p>appendix:{hean.position}</p>
                         </div>
                     )}
                 </div>
