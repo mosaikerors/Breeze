@@ -10,18 +10,18 @@ steps:
 # - name: configuration
 #   path: /drone/src/back-end/src/main/resources/application.yml
   commands:
-  - cd project/admin-service
+  - cd project/user-service
   - mvn clean
   - mvn package
-  - echo "test and package admin-service completed 🙂🙂🙂"
+  - echo "test and package user-service completed 🙂🙂🙂"
   - cd ../hean-service
   - mvn clean
   - mvn package
   - echo "test and package hean-service completed 🙂🙂🙂"
-  - cd ../user-service
+  - cd ../admin-service
   - mvn clean
   - mvn package
-  - echo "test and package user-service completed 🙂🙂🙂"
+  - echo "test and package admin-service completed 🙂🙂🙂"
 
 - name: upload admin-service
   image: appleboy/drone-scp
