@@ -37,28 +37,6 @@ public class UserController {
     }
 
     /*
-     * 注册
-     * 输入：用户名username（String），密码password（String），手机phone（Long）
-     * 返回：注册信息（String）
-     * */
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public JSONObject signup(@RequestBody JSONObject params) {
-        String result = userService.addUser(
-                params.getString("username"), params.getLong("phone"), params.getString("password"));
-        return UserUtil.constructJsonOfMessage(result);
-    }
-
-    /*
-     * 激活
-     * 输入：code（String）
-     * 返回：激活信息（String）
-     * */
-    @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    public JSONObject activate(@RequestParam String code) {
-        return UserUtil.constructJsonOfMessage(userService.activate(code));
-    }
-
-    /*
      * 认证
      * 输入：phone（Long），password（String）
      * 返回：认证信息（String）

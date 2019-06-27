@@ -84,20 +84,6 @@ public class UserInfoServiceImpleTest {
   }
 
   /**
-   * Method: queryById(String id)
-   */
-  @Test
-  public void testQueryById() throws Exception {
-    User user = new User( "username", "password",  17037041703L,1);
-    when(userInfoRepository.findById(1L)).thenReturn(Optional.ofNullable(user));
-    User result = userInfoServiceImple.queryById(1L);
-    // 验证模拟对象的fetchPerson(1)方法是否被调用了一次
-    assertThat(result,equalTo(user));
-    // 检查模拟对象上是否还有未验证的交互
-    verifyNoMoreInteractions(userInfoRepository);
-  }
-
-  /**
    * Method: queryByUsernameLike(String name)
    */
   @Test

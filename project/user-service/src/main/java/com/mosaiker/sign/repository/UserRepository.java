@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByPhone(Long phone);
-    boolean existsByPhoneAndStatusIsNot(Long phone, int notStatus);
-    User findByCodeEquals(String code);
     User findByPhoneAndPassword(String phone, String password);
     @Modifying
     @Transactional

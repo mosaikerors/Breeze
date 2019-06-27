@@ -11,7 +11,6 @@ public class User {
     private String username;
     private String password;
     private long phone;
-    private String code;
     //status: -1: unactivated, 0: banned, 1: player, 2: admin, 3: third party
     private int status;
 
@@ -19,16 +18,15 @@ public class User {
 
     }
 
-    public User(String username, String password, long phone, String code, int status) {
+    public User(String username, String password, long phone, int status) {
         this.username = username;
         this.password = password;
         this.phone = phone;
-        this.code = code;
         this.status = status;
     }
 
     @Id
-    @Column(name = "u_id", nullable = false)
+    @Column(name = "id", nullable = false)
     public long getuId() {
         return uId;
     }
@@ -68,16 +66,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "code", nullable = false, length = 32)
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Basic
     @Column(name = "status", nullable = false)
     public int getStatus() {
         return status;
@@ -99,7 +87,6 @@ public class User {
         if (status != user.status) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (code != null ? !code.equals(user.code) : user.code != null) return false;
 
         return true;
     }
@@ -110,7 +97,6 @@ public class User {
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (int) (phone ^ (phone >>> 32));
-        result = 31 * result + (code != null ? code.hashCode() : 0);
         result = 31 * result + status;
         return result;
     }
