@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Divider } from '@material-ui/core';
 import agent from './agent';
 
 class App extends React.Component {
@@ -98,22 +98,24 @@ class App extends React.Component {
                 </Button>
                 <div>
                     {this.state.heans.length === 1 ? <p>Login please</p> :
-                        this.state.heans.map(hean => 
-                        <div>
-                            <p>userId:{hean.userId}</p>
-                            <p>content:{hean.content}</p>
-                            <p>appendix:{hean.position}</p>
-                        </div>
-                    )}
+                        this.state.heans.map(hean =>
+                            <div>
+                                <p>userId:{hean.userId}</p>
+                                <p>content:{hean.content}</p>
+                                <p>appendix:{hean.position}</p>
+                                <Divider />
+                            </div>
+                        )}
                 </div>
                 <div>
                     {this.state.users.length === 1 ? <p>Login please</p> :
-                        this.state.users.map(user => 
-                        <div>
-                            <p>phone:{user.phone}</p>
-                            <p>status:{user.status}</p>
-                        </div>
-                    )}
+                        this.state.users.map(user =>
+                            <div>
+                                <p>phone:{user.phone}</p>
+                                <p>status:{user.status}</p>
+                                <Divider />
+                            </div>
+                        )}
                 </div>
             </React.Fragment>
         );
