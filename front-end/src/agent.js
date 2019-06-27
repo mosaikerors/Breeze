@@ -3,19 +3,20 @@ const requests = require('superagent');
 const API_ROOT = 'http://localhost:6180';
 
 const User = {
-    showAll: (token) => {
+    showAll: (token) =>
         requests.get(API_ROOT + '/admin/showAll')
             .set('Authorization', 'Bearer ' + token)
             .then(res => res.body)
-    },
+            .catch(err => err.response.body.status),
     login: (phone, password) =>
         requests.post(API_ROOT + '/user/login')
             .send({ phone, password })
             .then(res => res.body)
+    
 }
 
 const Hean = {
-    showAll: (token) => {
+    showAll: (token) =>
         requests.post(API_ROOT + '/hean/search/byTime')
             .set('Authorization', 'Bearer ' + token)
             .send({
@@ -23,7 +24,7 @@ const Hean = {
                 endTime: "2019-12-31"
             })
             .then(res => res.body)
-    }
+            .catch(err => err.response.body.status),
 }
 
 export default {

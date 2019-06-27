@@ -20,16 +20,19 @@ class App extends React.Component {
     }
 
     async handleClickHean() {
-        console.log(await agent.Hean.showAll(this.state.token))
+        const resp = await agent.Hean.showAll(this.state.token);
+        console.log(resp.heans);
         this.setState({
-            heans: agent.Hean.showAll(this.state.token),
+            heans: resp === 500 ? ["Login please"] : resp.heans,
             users: []
         })
     }
 
-    handleClickUser() {
+    async handleClickUser() {
+        const resp = await agent.User.showAll(this.state.token);
+        console.log(resp)
         this.setState({
-            users: agent.User.showAll(this.state.token),
+            users: resp === 500 ? ["Login please"] : resp.users,
             heans: []
         })
     }
@@ -89,12 +92,13 @@ class App extends React.Component {
                 <br />
                 <Button
                     variant='contained'
-                    onClick={this.handleUserHean}
+                    onClick={this.handleClickUser}
                 >
                     show users
                 </Button>
                 <div>
-                    {this.state.heans.map(hean => 
+                    {this.state.heans.length === 1 ? <p>Login please</p> :
+                        this.state.heans.map(hean => 
                         <div>
                             <p>userId:{hean.userId}</p>
                             <p>content:{hean.content}</p>
@@ -103,7 +107,8 @@ class App extends React.Component {
                     )}
                 </div>
                 <div>
-                    {this.state.users.map(user => 
+                    {this.state.users.length === 1 ? <p>Login please</p> :
+                        this.state.users.map(user => 
                         <div>
                             <p>phone:{user.phone}</p>
                             <p>status:{user.status}</p>
