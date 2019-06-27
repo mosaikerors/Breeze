@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByPhoneAndPassword(String phone, String password){
+    public User findByPhoneAndPassword(Long phone, String password){
         return userRepository.findByPhoneAndPassword(phone, password);
     }
 

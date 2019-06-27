@@ -5,6 +5,6 @@ public interface UserService {
 
     User findUserByPhone(Long phone);
 
-    User findByPhoneAndPassword(String phone, String password);
+    User findByPhoneAndPassword(Long phone, String password);
 
 }

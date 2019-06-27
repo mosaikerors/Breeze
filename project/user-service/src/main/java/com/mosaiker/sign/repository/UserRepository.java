@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     User findByPhone(Long phone);
-    User findByPhoneAndPassword(String phone, String password);
+    User findByPhoneAndPassword(Long phone, String password);
     @Modifying
     @Transactional
     void deleteUserByPhone(Long phone);

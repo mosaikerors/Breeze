@@ -44,7 +44,7 @@ public class UserController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public JSONObject authenticate(@RequestBody JSONObject request){
         User user = userService.findByPhoneAndPassword(
-                request.getString("phone"), request.getString("password"));
+                request.getLong("phone"), request.getString("password"));
         if (user == null)
             return UserUtil.constructJsonOfWrong("authentication fail");
         return UserUtil.constructJsonOfAuthSuccessful(user.getStatus());

@@ -26,14 +26,4 @@ public class UserController {
         return new ResponseEntity<JSONObject>(response, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ResponseEntity<JSONObject> signup(@RequestBody JSONObject params) {
-        return new ResponseEntity<JSONObject>(userService.signup(params), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> activate(@RequestParam String code) {
-        return new ResponseEntity<JSONObject>(userService.activate(code), HttpStatus.OK);
-    }
-
 }
