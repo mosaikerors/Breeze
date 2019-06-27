@@ -12,4 +12,5 @@ public interface HeanRepository extends MongoRepository<Hean, Long>{
     List<Hean> findByUserId(long userId);
     List<Hean> findByPosition(String position);
     List<Hean> findByTimeBetween(Date beginTime, Date endTime);
+    void deleteByUserIdAndTime(long userId, Date time);
 }
