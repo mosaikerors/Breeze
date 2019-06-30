@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Primary
-@FeignClient(value = "user-service", fallback = AuthenticationHystric.class, path = "/api/user")
+@FeignClient(value = "USER-SERVICE", fallback = AuthenticationHystric.class, path = "/api/user")
 public interface AuthenticationService {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)

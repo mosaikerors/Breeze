@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @Autowired
-    AdminService adminService;
+    private AdminService adminService;
 
     @Autowired
-    AuthService authService;
+    private AuthService authService;
 
     private static final String ADMIN = "ADMIN";
     private static final String USER = "USER";
 
     @RequestMapping(value = "/showAll", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> findByPage(@RequestHeader(name = "Authentication") String token) {
+    public ResponseEntity<JSONObject> findByPage(@RequestHeader(name = "Authorization") String token) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
         JSONObject result = adminService.findAllUser();
@@ -31,7 +31,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/totalNum", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> getTotal(@RequestHeader(name = "Authentication") String token) {
+    public ResponseEntity<JSONObject> getTotal(@RequestHeader(name = "Authorization") String token) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
         JSONObject result = adminService.getTotal();
@@ -39,7 +39,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/show", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> showDetail(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> showDetail(@RequestHeader(name = "Authorization") String token,
                                                  @RequestParam(name = "id") String id) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, USER)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
@@ -48,7 +48,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/toggle", method = RequestMethod.PUT)
-    public ResponseEntity<JSONObject> changeStatus(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> changeStatus(@RequestHeader(name = "Authorization") String token,
                                                    @RequestBody JSONObject param) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);
@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<JSONObject> update(@RequestHeader(name = "Authentication") String token,
+    public ResponseEntity<JSONObject> update(@RequestHeader(name = "Authorization") String token,
                                              @RequestBody JSONObject param) {
         if (!authService.verifyToken(AuthUtil.constructJsonOfAuthentication(token, ADMIN)))
             return new ResponseEntity<JSONObject>(AuthUtil.constructJsonOfAuthFail(), HttpStatus.UNAUTHORIZED);

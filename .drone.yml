@@ -1,17 +1,38 @@
 kind: pipline
-name: demo
+name: Breeze
 
 steps:
-- name: node1
-  image: node:11.12.0
+- name: test admin-service
+  image: maven
+  volumes:
+  - name: dependency
+    path: /root/.m2
+# - name: configuration
+#   path: /drone/src/back-end/src/main/resources/application.yml
   commands:
-  - echo "this is testing"
+  - cd project/admin-service
+  - mvn clean
+  - mvn package
+  - echo "test and package admin-service completed 🙂🙂🙂"
 
-- name: node2
-  image: node:11.12.0
+- name: test hean-service
+  image: maven
+  volumes:
+  - name: dependency
+    path: /root/.m2
   commands:
-  - sleep 10
-  - echo "sleep 10"
-  when:
-    branch:
-      - dev
+  - cd project/hean-service
+  - mvn clean
+  - mvn package
+  - echo "test and package hean-service completed 🙂🙂🙂"
+
+- name: test user-service
+  image: maven
+  volumes:
+  - name: dependency
+    path: /root/.m2
+  commands:
+  - cd project/user-service
+  - mvn clean
+  - mvn package
+  - echo "test and package user-service completed 🙂🙂🙂"

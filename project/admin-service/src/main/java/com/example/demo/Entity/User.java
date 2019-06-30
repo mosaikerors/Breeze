@@ -1,63 +1,67 @@
 package com.example.demo.Entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "User")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
-    @Id
-    private String u_id;
+  @Id
+  @GeneratedValue
+  private long id;
+  @Column
+  private String username;
+  @Column
+  private String password;
 
-    private String username;
-    private String password;
-    private String email;
-    private String phone;
-    /*u_id
-     * 0:封禁 1：普通用户 -1：未激活 2：管理员
-     */
-    private int status = -1;
+  @Column(unique = true)
+  private Long phone;
+  /*u_id
+   * 0:封禁 1：普通用户 -1：未激活 2：管理员
+   */
+  @Column
+  private int status = -1;
+  private static final long serialVersionUID = 1L;
 
-    public User(String u_id, String username, String password, String email, String phone) {
-        this.u_id = u_id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-    }
+  public User(){
 
-    public String getU_id() {return u_id;}
+  }
+  public User(String username, String password, Long phone, int status) {
+    this.username = username;
+    this.password = password;
+    this.phone = phone;
+    this.status = status;
+  }
 
-    public void setU_id(String u_id) {
-        this.u_id = u_id;
-    }
 
-    public int getStatus() {
-        return status;
-    }
+  public int getStatus() {
+    return status;
+  }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+  public void setStatus(int status) {
+    this.status = status;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getUsername() { return username; }
 
-    public String getPhone() {
-        return phone;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+  public Long getPhone() {
+    return phone;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setPhone(Long phone) {
+    this.phone = phone;
+  }
+
 
 }

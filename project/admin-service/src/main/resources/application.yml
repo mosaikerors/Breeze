@@ -7,11 +7,17 @@ server:
   port: 6160
 
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
   application:
     name: admin-service
-  data:
-    mongodb:
-      database: notus
-      host: 47.103.0.246
-      port: 27017
-      password: mosaiker
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.103.0.246:4399/notus?useSSL=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    username: root
+    password: kty141
+
+
+
+

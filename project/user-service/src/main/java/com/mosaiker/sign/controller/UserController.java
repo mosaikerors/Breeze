@@ -25,7 +25,6 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public JSONObject login(@RequestBody JSONObject params) {
         User user = userService.findUserByPhone(params.getLong("phone"));
-
         if (user == null || user.getStatus() == 0)
             return UserUtil.constructJsonOfWrong("nonexistent or unactivated user");
 
@@ -34,30 +33,7 @@ public class UserController {
 
         if (user.getStatus() == -1)
             return UserUtil.constructJsonOfWrong("The user has been banned.");
-
         return UserUtil.constructJsonOfSuccessfulLogin(user.getUsername(), user.getStatus());
-    }
-
-    /*
-     * 注册
-     * 输入：用户名username（String），密码password（String），手机phone（Long）
-     * 返回：注册信息（String）
-     * */
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public JSONObject signup(@RequestBody JSONObject params) {
-        String result = userService.addUser(
-                params.getString("username"), params.getLong("phone"), params.getString("password"));
-        return UserUtil.constructJsonOfMessage(result);
-    }
-
-    /*
-     * 激活
-     * 输入：code（String）
-     * 返回：激活信息（String）
-     * */
-    @RequestMapping(value = "/activate", method = RequestMethod.GET)
-    public JSONObject activate(@RequestParam String code) {
-        return UserUtil.constructJsonOfMessage(userService.activate(code));
     }
 
     /*
@@ -68,7 +44,7 @@ public class UserController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public JSONObject authenticate(@RequestBody JSONObject request){
         User user = userService.findByPhoneAndPassword(
-                request.getString("phone"), request.getString("password"));
+                request.getLong("phone"), request.getString("password"));
         if (user == null)
             return UserUtil.constructJsonOfWrong("authentication fail");
         return UserUtil.constructJsonOfAuthSuccessful(user.getStatus());

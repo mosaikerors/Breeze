@@ -5,17 +5,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("userInfoService")
 public interface UserInfoService {
 
-    User queryByPhone(String phone);
 
-    List<User> findAll();
+  User queryByPhone(Long phone);
 
-    User queryById(String id);
+  List<User> findAll();
 
-    void update(User user);
+  User queryById(Long id);
 
-    long count();
+  //update userInfo
+  User update(User user);
+
+  //save a batch of userinfos
+  void batchSave(List<User> userList);
+
+  List<User> queryByUsernameLike(String name);
+
+
+  List<User> findByUsername(String username);
 
 }
 
